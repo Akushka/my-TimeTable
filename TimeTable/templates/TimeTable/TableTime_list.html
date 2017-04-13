@@ -1,0 +1,62 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Расписание</title>
+ </head>
+ <body>
+ 	
+ 	<table border="1">
+   <caption>Расписание занятий</caption>
+   <tr>
+   	<th width="100"> Время занятий </th>
+
+   	{% for DayTableBase in DayTableBases %}	
+      <th width="150">{{DayTableBase.day}} </th>
+    {% endfor %}
+
+    
+   </tr>
+ 
+ 	 {% for arrTimeStr in TimeTable.arrTimeStr %}   	
+     <tr> 
+    	<td>{{arrTimeStr}}</td>
+    	
+     <td>1</td> 
+     <td>2</td> 
+     <td>3</td> 
+     <td>4</td> 
+     <td>5</td> 
+     <td>6</td> 
+     
+     </tr> 
+    {% endfor %}    
+ 	  
+<!-- 	  
+    {% for arrTimeStr in TimeTable.arrTimeStr %}   	
+       <tr> 
+       	<td>{{arrTimeStr}}</td>
+       	
+       	{% for LessonInDay in LessonInDays %} 
+       	  {% if LessonInDay.lesson_id.day = "Понедельник" %}
+       	    <td>{{LessonInDay.nameLesson}}</td> 
+       	    {% endif %} 
+       	{% endfor %}
+       </tr> 
+    {% endfor %}
+-->    
+  	
+  	
+<form action="/"	method="post" >
+	{% csrf_token %}
+	
+	{{ form.beginLesson }} Начало уроков (формат "00:00")<br>
+	{{ form.lengthLesson }} Длительность занятия (формат "00")<br>
+	{{ form.pauseLesson }} Длительность перемены (формат "00")<br>
+	<input type = "submit" class="button" value="Изменить интервалы">
+</form>
+
+</div>
+ 
+</body>
+      	
+</html>
